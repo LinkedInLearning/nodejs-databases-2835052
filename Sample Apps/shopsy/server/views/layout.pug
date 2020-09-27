@@ -1,0 +1,67 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    
+    title #{applicationName}
+    // Bootstrap core CSS
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', integrity='sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ', crossorigin='anonymous')
+    link(rel='stylesheet', href='/css/site.css')
+
+  body
+    nav.navbar.navbar-toggleable-md.navbar-inverse.bg-inverse.fixed-top
+      button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+
+      .container  
+        a.navbar-brand(href='#') #{applicationName}
+        #navbarsExampleDefault.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item.active
+              a.nav-link(href='/')
+                | Home 
+
+            li.nav-item
+              a.nav-link(href='/shop') Shop
+
+            li.nav-item
+              a.nav-link(href='/admin/user') Manage Users
+
+            li.nav-item
+              a.nav-link(href='/admin/item') Manage Items
+
+            li.nav-item
+              a.nav-link(href='/admin/orders') Manage Orders  
+
+          if currentUser
+            ul.navbar-nav.ml-auto
+              li.nav-item
+                a.nav-link(href='#')
+                  | Logged in as #{currentUser.email}
+
+              if basketCount
+                li.nav-item
+                  a.nav-link(href='/basket')
+                    if(basketCount > 1)
+                      | #{basketCount} items in basket
+                    else
+                      | #{basketCount} item in basket
+
+    .container
+
+      while messages.length > 0
+        - const message =messages.pop();
+        .alert(class='alert-dismissible fade show alert-' + message.type)
+          button.close(type='button', data-dismiss='alert', aria-label='Close')
+            span(aria-hidden='true') ×
+          | #{message.text}
+
+      block content
+
+
+  script(src='//code.jquery.com/jquery-3.1.1.slim.min.js', integrity='sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n', crossorigin='anonymous')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js', integrity='sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb', crossorigin='anonymous')
+  script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js', integrity='sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn', crossorigin='anonymous')
