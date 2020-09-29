@@ -1,7 +1,6 @@
 /* eslint-disable no-useless-constructor */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-empty-function */
-
 const CoinAPI = require('../CoinAPI');
 
 class MongoBackend {
