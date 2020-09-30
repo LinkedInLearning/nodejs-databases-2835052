@@ -8,13 +8,15 @@ class MongoBackend {
 
   constructor() {
     this.coinAPI = new CoinAPI();
-    this.client = null;
     this.mongoUrl = 'mongodb://localhost:27017/maxcoin';
+    this.client = null;
+    this.collection = null;
   }
 
   async connect() {
     const mongoClient = new MongoClient(this.mongoUrl, { useUnifiedTopology: true, useNewUrlParser: true });
     this.client = await mongoClient.connect();
+    this.collection = this.client.db('maxcoin').collection('values');
     return this.client;
   }
 
@@ -25,22 +27,17 @@ class MongoBackend {
     return false;
   }
 
-  async disconnect() {
-
-  }
-
   async insert() {
     const data = await this.coinAPI.fetch();
     const documents = [];
-    const db = this.client.db('maxcoin');
-    const collection = db.collection('values');
+
     for (const [key, value] of Object.entries(data.bpi)) {
       documents.push({
         date: key,
         value,
       });
     }
-    return collection.insertMany(documents);
+    return this.collection.insertMany(documents);
   }
 
   async getMax() {
