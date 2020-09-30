@@ -21,6 +21,10 @@ class RedisBackend {
 
   }
 
+  async getMax() {
+
+  }
+
   async max() {
 
   }

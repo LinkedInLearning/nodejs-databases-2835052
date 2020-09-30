@@ -21,6 +21,10 @@ class MySQLBackend {
 
   }
 
+  async getMax() {
+
+  }
+
   async max() {
 
   }

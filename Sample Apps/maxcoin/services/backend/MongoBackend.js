@@ -25,6 +25,10 @@ class MongoBackend {
     return false;
   }
 
+  async disconnect() {
+
+  }
+
   async insert() {
     const data = await this.coinAPI.fetch();
     const documents = [];
@@ -37,6 +41,10 @@ class MongoBackend {
       });
     }
     return collection.insertMany(documents);
+  }
+
+  async getMax() {
+
   }
 
   async max() {
