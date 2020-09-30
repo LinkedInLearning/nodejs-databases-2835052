@@ -1,11 +1,10 @@
 /* eslint-disable no-console */
-const CoinAPI = require('./services/CoinAPI');
-const coinAPI = new CoinAPI();
+
+const MongoBackend = require('./services/backend/MongoBackend');
 
 async function run() {
-  const data = await coinAPI.fetch();
-  console.log(data);
-  return data;
+  const mongoBackend = new MongoBackend();
+  return mongoBackend.max();
 }
 
-run().catch(error => console.error(error));
+run().then().catch(err => console.error(err));

@@ -13,6 +13,10 @@ class RedisBackend {
 
   }
 
+  async disconnect() {
+
+  }
+
   async insert() {
 
   }

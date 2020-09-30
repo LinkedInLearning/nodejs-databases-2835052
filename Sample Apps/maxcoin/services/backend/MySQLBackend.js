@@ -13,6 +13,10 @@ class MySQLBackend {
 
   }
 
+  async disconnect() {
+
+  }
+
   async insert() {
 
   }
