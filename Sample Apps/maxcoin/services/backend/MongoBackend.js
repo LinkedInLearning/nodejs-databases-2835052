@@ -13,7 +13,15 @@ class MongoBackend {
 
   }
 
+  async disconnect() {
+
+  }
+
   async insert() {
+
+  }
+
+  async getMax() {
 
   }
 

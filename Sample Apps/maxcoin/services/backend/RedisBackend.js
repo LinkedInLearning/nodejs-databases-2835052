@@ -13,7 +13,15 @@ class RedisBackend {
 
   }
 
+  async disconnect() {
+
+  }
+
   async insert() {
+
+  }
+
+  async getMax() {
 
   }
 

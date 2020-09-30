@@ -13,7 +13,15 @@ class MySQLBackend {
 
   }
 
+  async disconnect() {
+
+  }
+
   async insert() {
+
+  }
+
+  async getMax() {
 
   }
 
