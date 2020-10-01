@@ -37,11 +37,15 @@ class MongoBackend {
         value,
       });
     }
-    return this.collection.insertMany(documents);
+    await this.collection.insertMany(documents);
+    console.log(`Successfully inserted ${documents.length} documents into MongoDB`);
   }
 
   async getMax() {
-
+    // We will simply sort by value and select the first entry from the database
+    // This will naturally be the highest value
+    const options = { "sort": [['value', 'desc']] };
+    return this.collection.findOne({}, options);
   }
 
   async max() {
@@ -55,9 +59,18 @@ class MongoBackend {
     await this.insert();
     console.timeEnd('mongodb-insert');
 
+    console.time('mongodb-find');
+    const doc = await this.getMax();
+    console.timeEnd('mongodb-find');
+
     console.time('mongodb-disconnect');
     await this.disconnect();
     console.timeEnd('mongodb-disconnect');
+
+    return {
+      date: doc.date,
+      value: doc.value,
+    }
   }
 }
 
