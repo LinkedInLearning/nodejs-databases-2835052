@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('./express');
 
 module.exports = (config) => {
   const router = express.Router();

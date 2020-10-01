@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('./express');
 
 
 module.exports = (config) => {
@@ -6,7 +6,7 @@ module.exports = (config) => {
   const log = config.logger;
 
   router.get('/', async (req, res) => {
-    return res.render('shop', { });
+    return res.render('shop', {});
     /*
     const items = await itemService.getAll();
     return res.render('shop', { items });

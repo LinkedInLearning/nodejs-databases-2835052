@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const Sequelize = require('sequelize');
+const Sequelize = require('./sequelize');
 
 module.exports = (sequelize) => {
   const db = {};

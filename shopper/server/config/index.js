@@ -1,4 +1,4 @@
-const bunyan = require('bunyan');
+const bunyan = require('./bunyan');
 
 const appname = 'Shopsy';
 
