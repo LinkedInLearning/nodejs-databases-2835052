@@ -1,4 +1,4 @@
-const express = require('./express');
+const express = require('express');
 const userService = require('../../../services/userService');
 
 module.exports = (config) => {

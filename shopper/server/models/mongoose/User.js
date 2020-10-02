@@ -1,6 +1,8 @@
+/*
 const mongoose = require('mongoose');
 
 const bcrypt = require('./bcrypt');
+
 const SALT_WORK_FACTOR = 10;
 
 
@@ -42,3 +44,4 @@ UserSchema.methods.comparePassword = function comparePassword(candidatePassword,
 
 
 module.exports = mongoose.model('User', UserSchema);
+*/
