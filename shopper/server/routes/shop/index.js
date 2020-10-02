@@ -1,12 +1,11 @@
 const express = require('express');
 
 
-module.exports = (config) => {
+module.exports = () => {
   const router = express.Router();
-  const log = config.logger;
 
   router.get('/', async (req, res) => {
-    return res.render('shop', { });
+    return res.render('shop', {});
     /*
     const items = await itemService.getAll();
     return res.render('shop', { items });
@@ -36,7 +35,7 @@ module.exports = (config) => {
         type: 'danger',
         text: 'There was an error adding the item to the basket',
       });
-      log.fatal(err);
+      console.error(err);
     }
 
     return res.redirect('/shop');
