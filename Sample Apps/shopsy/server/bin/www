@@ -2,6 +2,8 @@
 
 // Dependencies
 const http = require('http');
+const mongoose = require('mongoose');
+
 const config = require('../config');
 const App = require('../app');
 
@@ -44,6 +46,16 @@ function onListening() {
 
   log.info(`${config.applicationName} listening on ${bind}`);
 }
-server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.info('Successfully connected to MongoDB');
+    server.listen(port);
+  }).catch((error) => {
+    console.error(error)
+  })
+
+
+
