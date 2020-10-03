@@ -1,3 +1,5 @@
+const pkg = require('../../package.json');
+
 module.exports = {
-  applicationName: 'Shopper',
+  applicationName: pkg.name,
 };
