@@ -1,5 +1,5 @@
 const express = require('express');
-const userService = require('../../../services/userService');
+const userService = require('../../../services/UserService');
 
 module.exports = (config) => {
   const router = express.Router();

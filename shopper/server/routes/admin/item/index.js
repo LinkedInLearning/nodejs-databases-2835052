@@ -1,20 +1,19 @@
 const express = require('express');
 
-module.exports = (config) => {
+module.exports = () => {
   const router = express.Router();
-  const log = config.logger;
 
   router.get('/:itemId?', async (req, res) => {
     return res.render('admin/item', {});
 
     /*
     try {
-      const items = await itemService.getAll();
+      const items = await ItemService.getAll();
       let item = null;
 
       // The optional param itemId is present
       if (req.params.itemId) {
-        item = await itemService.getOne(req.params.itemId);
+        item = await ItemService.getOne(req.params.itemId);
       }
 
       return res.render('admin/item', {
@@ -50,14 +49,14 @@ module.exports = (config) => {
     try {
       // If there was no existing item we now want to create a new item object
       if (!req.body.itemId) {
-        await itemService.create({ sku, name, price });
+        await ItemService.create({ sku, name, price });
       } else {
         const itemData = {
           sku,
           name,
           price,
         };
-        await itemService.update(req.body.itemId, itemData);
+        await ItemService.update(req.body.itemId, itemData);
       }
       req.session.messages.push({
         type: 'success',
@@ -81,7 +80,7 @@ module.exports = (config) => {
 
     /*
     try {
-      const deleteResult = await itemService.remove({ _id: req.params.itemId });
+      const deleteResult = await ItemService.remove({ _id: req.params.itemId });
       if (deleteResult === 0) {
         throw new Error('Result returned zero deleted documents!');
       }
