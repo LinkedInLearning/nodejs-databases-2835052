@@ -68,7 +68,7 @@ module.exports = () => {
         type: 'danger',
         text: 'There was an error while saving the item!',
       });
-      log.fatal(err);
+      console.error(err);
       return res.redirect('/admin/item');
     }
     */
@@ -90,7 +90,7 @@ module.exports = () => {
         type: 'danger',
         text: 'There was an error while deleting the item!',
       });
-      log.fatal(err);
+      console.error(err);
       return res.redirect('/admin/item');
     }
     // Let the item knows that everything went fine
