@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-// Dependencies
 const http = require('http');
 
 const config = require('../config');
@@ -43,7 +42,7 @@ function onListening() {
     ? `pipe ${addr}`
     : `port ${addr.port}`;
 
-  log.info(`${config.applicationName} listening on ${bind}`);
+  console.info(`${config.applicationName} listening on ${bind}`);
 }
 server.on('error', onError);
 server.on('listening', onListening);
