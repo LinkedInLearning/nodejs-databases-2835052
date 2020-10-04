@@ -5,8 +5,6 @@ const http = require('http');
 const config = require('../config');
 const App = require('../app');
 
-const log = config.logger;
-
 /* Logic to start the application */
 const app = App(config);
 const port = process.env.PORT || '3000';
@@ -23,11 +21,11 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      log.fatal(`${bind} requires elevated privileges`);
+      console.error(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      log.fatal(`${bind} is already in use`);
+      console.error(`${bind} is already in use`);
       process.exit(1);
       break;
     default:

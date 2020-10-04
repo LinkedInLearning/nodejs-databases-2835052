@@ -44,7 +44,7 @@ module.exports = (config) => {
         type: 'danger',
         text: 'There was an error removing the item from the basket',
       });
-      log.fatal(err);
+      console.error(err);
       return res.redirect('/basket');
     }
 
@@ -97,7 +97,7 @@ module.exports = (config) => {
         type: 'danger',
         text: 'There was an error finishing your order',
       });
-      log.fatal(err);
+      console.error(err);
       return res.redirect('/basket');
     }
     */

@@ -1,8 +1,7 @@
 const express = require('express');
 
-module.exports = (config) => {
+module.exports = () => {
   const router = express.Router();
-  const log = config.logger;
 
   router.get('/', async (req, res) => {
     return res.render('admin/orders', {});
@@ -19,7 +18,7 @@ module.exports = (config) => {
         type: 'danger',
         text: 'There was an error fetching the orders',
       });
-      log.fatal(err);
+      console.error(err);
       return next(err);
     }
     */
@@ -41,7 +40,7 @@ module.exports = (config) => {
         type: 'danger',
         text: 'There was an updaeting the order',
       });
-      log.fatal(err);
+      console.error(err);
       return res.redirect('/admin/orders');
     }
     */
