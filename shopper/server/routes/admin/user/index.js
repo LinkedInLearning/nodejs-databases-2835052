@@ -3,7 +3,7 @@ const express = require('express');
 module.exports = () => {
   const router = express.Router();
 
-  router.get('/:userId?', async (req, res, next) => {
+  router.get('/:userId?', async (req, res) => {
     return res.render('admin/user');
 
     /*
@@ -27,7 +27,7 @@ module.exports = () => {
   });
 
   // Save or update user
-  router.post('/', async (req, res) => {
+  router.post('/', async (req, res, next) => {
     return next('Not implemented');
 
     /*
@@ -72,7 +72,7 @@ module.exports = () => {
   });
 
   // Delete user
-  router.get('/delete/:userId', async (req, res) => {
+  router.get('/delete/:userId', async (req, res, next) => {
     return next('Not implemented');
     /*
     try {
@@ -96,7 +96,7 @@ module.exports = () => {
   });
 
 
-  router.get('/impersonate/:userId', (req, res) => {
+  router.get('/impersonate/:userId', (req, res, next) => {
     return next('Not implemented');
     /*
     req.session.userId = req.params.userId;
