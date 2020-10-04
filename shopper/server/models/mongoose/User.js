@@ -1,4 +1,3 @@
-/*
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -43,4 +42,3 @@ UserSchema.methods.comparePassword = function comparePassword(candidatePassword,
 
 
 module.exports = mongoose.model('User', UserSchema);
-*/

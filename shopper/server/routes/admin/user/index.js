@@ -1,16 +1,12 @@
 const express = require('express');
-const userService = require('../../../services/UserService');
 
-module.exports = (config) => {
+module.exports = () => {
   const router = express.Router();
-  const log = config.logger;
 
-  // Do you see the keyword 'async' here?
-  // If this looks unfamiliar, this is a new language feature of JavaScript
-  // that made it into Node.js in version 8
-  // Functions that are marked with async can use the await keyword which
-  // lets you basically use asynchronous functions as if they were synchronous.
   router.get('/:userId?', async (req, res, next) => {
+    return res.render('admin/user');
+
+    /*
     try {
       const users = await userService.getAll();
 
@@ -27,10 +23,14 @@ module.exports = (config) => {
     } catch (err) {
       return next(err);
     }
+    */
   });
 
   // Save or update user
   router.post('/', async (req, res) => {
+    return next('Not implemented');
+
+    /*
     const email = req.body.email.trim();
     const password = req.body.password.trim();
     // Add this here because on update we might want to keep the password as it is
@@ -65,13 +65,16 @@ module.exports = (config) => {
         type: 'danger',
         text: 'There was an error while saving the user!',
       });
-      log.fatal(err);
+      console.error(err);
       return res.redirect('/admin/user');
     }
+    */
   });
 
   // Delete user
   router.get('/delete/:userId', async (req, res) => {
+    return next('Not implemented');
+    /*
     try {
       await userService.remove(req.params.userId);
     } catch (err) {
@@ -80,7 +83,7 @@ module.exports = (config) => {
         type: 'danger',
         text: 'There was an error while deleting the user!',
       });
-      log.fatal(err);
+      console.error(err);
       return res.redirect('/admin/user');
     }
     // Let the user knows that everything went fine
@@ -89,16 +92,20 @@ module.exports = (config) => {
       text: 'The user was successfully deleted!',
     });
     return res.redirect('/admin/user');
+    */
   });
 
 
   router.get('/impersonate/:userId', (req, res) => {
+    return next('Not implemented');
+    /*
     req.session.userId = req.params.userId;
     req.session.messages.push({
       type: 'success',
       text: 'User successfully switched',
     });
     return res.redirect('/admin/user');
+    */
   });
 
   return router;
