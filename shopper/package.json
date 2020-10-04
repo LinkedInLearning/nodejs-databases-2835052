@@ -4,8 +4,8 @@
   "private": true,
   "author": "Daniel Khan <daniel@khan.io>",
   "scripts": {
-    "start": "node ./server/bin/www",
-    "dev": "nodemon ./server/bin/www"
+    "start": "node ./server/bin/start",
+    "dev": "nodemon ./server/bin/start"
   },
   "dependencies": {
     "body-parser": "~1.19.0",

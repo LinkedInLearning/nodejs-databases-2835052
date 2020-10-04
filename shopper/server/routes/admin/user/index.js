@@ -73,10 +73,7 @@ module.exports = (config) => {
   // Delete user
   router.get('/delete/:userId', async (req, res) => {
     try {
-      const deleteResult = await userService.remove(req.params.userId);
-      if (deleteResult === 0) {
-        throw new Error('Result returned zero deleted documents!');
-      }
+      await userService.remove(req.params.userId);
     } catch (err) {
       // Error handling
       req.session.messages.push({

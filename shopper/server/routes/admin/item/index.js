@@ -80,10 +80,7 @@ module.exports = () => {
 
     /*
     try {
-      const deleteResult = await ItemService.remove({ _id: req.params.itemId });
-      if (deleteResult === 0) {
-        throw new Error('Result returned zero deleted documents!');
-      }
+      await ItemService.remove({ _id: req.params.itemId });
     } catch (err) {
       // Error handling
       req.session.messages.push({
