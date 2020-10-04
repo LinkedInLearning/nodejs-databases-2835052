@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 
 const SALT_WORK_FACTOR = 10;
 
+
 const UserSchema = mongoose.Schema({
   email: {
     // Trim and lowercase
