@@ -44,7 +44,7 @@ class MongoBackend {
   }
 
   async getMax() {
-    return this.collection.findOne({}, { sort: { value: 1 } });
+    return this.collection.findOne({}, { sort: { value: -1 } });
   }
 
   async max() {
