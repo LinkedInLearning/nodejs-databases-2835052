@@ -25,7 +25,7 @@ module.exports = () => {
     }
 
     try {
-      await BasketService.add(req.params.itemId, res.locals.currentUser.id);
+      await basket.add(req.params.itemId, res.locals.currentUser.id);
       req.session.messages.push({
         type: 'success',
         text: 'The item was added to the basket',
