@@ -9,7 +9,7 @@ module.exports = () => {
     /*
     try {
       // Get all orders
-      const orderResult = await OrderService.getAll();
+      const orderResult = await order.getAll();
       // Run map on the data to convert it into nested arrays with orders and orderitems
       const orders = orderResult.map(item => item.get({ plain: true }));
       return res.render('admin/orders', { orders });
@@ -29,7 +29,7 @@ module.exports = () => {
 
     /*
     try {
-      await OrderService.setStatus(req.params.orderId, 'Shipped');
+      await order.setStatus(req.params.orderId, 'Shipped');
       req.session.messages.push({
         type: 'success',
         text: 'Status updated',
