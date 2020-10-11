@@ -1,8 +1,8 @@
 const CoinAPI = require("./services/CoinAPI");
 
 async function run() {
-  const mongoBackend = new MongoBackend();
-  return mongoBackend.max();
+  const coinAPI = new CoinAPI();
+  return coinAPI.fetch();
 }
 
 run()
