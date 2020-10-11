@@ -9,23 +9,15 @@ class MongoBackend {
     this.coinAPI = new CoinAPI();
   }
 
-  async connect() {
+  async connect() {}
 
-  }
+  async disconnect() {}
 
-  async disconnect() {
+  async insert() {}
 
-  }
+  async getMax() {}
 
-  async insert() {
-  }
-
-  async getMax() {
-
-  }
-
-  async max() {
-  }
+  async max() {}
 }
 
 module.exports = MongoBackend;
