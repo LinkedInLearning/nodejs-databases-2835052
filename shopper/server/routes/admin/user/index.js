@@ -8,13 +8,13 @@ module.exports = () => {
 
     /*
     try {
-      const users = await userService.getAll();
+      const users = await UserService.getAll();
 
       let user = null;
 
       // The optional userId param was passed
       if (req.params.userId) {
-        user = await userService.getOne(req.params.userId);
+        user = await UserService.getOne(req.params.userId);
       }
       return res.render('admin/user', {
         users,
@@ -44,7 +44,7 @@ module.exports = () => {
     try {
       // If there was no existing user we now want to create a new user object
       if (!req.body.userId) {
-        await userService.create({ email, password });
+        await UserService.create({ email, password });
       } else {
         const userData = {
           email,
@@ -53,7 +53,7 @@ module.exports = () => {
         if (password) {
           userData.password = password;
         }
-        await userService.update(req.body.userId, userData);
+        await UserService.update(req.body.userId, userData);
       }
       req.session.messages.push({
         type: 'success',
@@ -76,7 +76,7 @@ module.exports = () => {
     return next('Not implemented');
     /*
     try {
-      await userService.remove(req.params.userId);
+      await UserService.remove(req.params.userId);
     } catch (err) {
       // Error handling
       req.session.messages.push({
