@@ -1,4 +1,4 @@
-const MongoBackend = require("./services/backend/MongoBackend");
+const CoinAPI = require("./services/CoinAPI");
 
 async function run() {
   const mongoBackend = new MongoBackend();

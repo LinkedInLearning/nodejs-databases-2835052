@@ -1,8 +1,7 @@
 const express = require('express');
 
-module.exports = (config) => {
+module.exports = () => {
   const router = express.Router();
-  const log = config.logger;
 
   router.get('/', async (req, res) => {
     return res.render('basket', {});
@@ -12,7 +11,7 @@ module.exports = (config) => {
     let items = [];
     if (basketItems) {
       items = await Promise.all(Object.keys(basketItems).map(async (key) => {
-        const item = await itemService.getOne(key);
+        const item = await ItemService.getOne(key);
         item.quantity = basketItems[key];
         return item;
       }));
@@ -71,7 +70,7 @@ module.exports = (config) => {
       // Find the item for each basket entry and add the quantity to it
       // Return a new array with items plus quantity as new field
       const items = await Promise.all(Object.keys(basketItems).map(async (key) => {
-        const item = await itemService.getOne(key);
+        const item = await ItemService.getOne(key);
         item.quantity = basketItems[key];
         return item;
       }));
