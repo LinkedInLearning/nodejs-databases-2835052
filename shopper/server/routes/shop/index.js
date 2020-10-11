@@ -7,7 +7,7 @@ module.exports = () => {
   router.get('/', async (req, res) => {
     return res.render('shop', {});
     /*
-    const items = await itemService.getAll();
+    const items = await ItemService.getAll();
     return res.render('shop', { items });
     */
   });
@@ -25,7 +25,7 @@ module.exports = () => {
     }
 
     try {
-      await basket.add(req.params.itemId, res.locals.currentUser.id);
+      await BasketService.add(req.params.itemId, res.locals.currentUser.id);
       req.session.messages.push({
         type: 'success',
         text: 'The item was added to the basket',
