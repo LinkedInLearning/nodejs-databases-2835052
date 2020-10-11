@@ -1,12 +1,12 @@
 const express = require('express');
 
+const ItemService = require('../../../services/ItemService');
+
 module.exports = () => {
   const router = express.Router();
 
-  router.get('/:itemId?', async (req, res) => {
-    return res.render('admin/item', {});
+  router.get('/:itemId?', async (req, res, next) => {
 
-    /*
     try {
       const items = await ItemService.getAll();
       let item = null;
@@ -23,15 +23,10 @@ module.exports = () => {
     } catch (err) {
       return next(err);
     }
-    */
   });
 
   // Save or update item
-  router.post('/', async (req, res, next) => {
-    return next('Not implemented');
-
-    /*
-
+  router.post('/', async (req, res) => {
     // Massage the passed in form data a bit
     const sku = req.body.sku.trim();
     const name = req.body.name.trim();
@@ -71,14 +66,11 @@ module.exports = () => {
       console.error(err);
       return res.redirect('/admin/item');
     }
-    */
   });
 
   // Delete item
-  router.get('/delete/:itemId', async (req, res, next) => {
-    return next('Not implemented');
+  router.get('/delete/:itemId', async (req, res) => {
 
-    /*
     try {
       await ItemService.remove({ _id: req.params.itemId });
     } catch (err) {
@@ -96,7 +88,6 @@ module.exports = () => {
       text: 'The item was successfully deleted!',
     });
     return res.redirect('/admin/item');
-    */
   });
   return router;
 };
