@@ -1,12 +1,12 @@
 const express = require('express');
 
+const UserService = require('../../../services/UserService');
+
 module.exports = () => {
   const router = express.Router();
 
-  router.get('/:userId?', async (req, res) => {
-    return res.render('admin/user');
+  router.get('/:userId?', async (req, res, next) => {
 
-    /*
     try {
       const users = await UserService.getAll();
 
@@ -23,14 +23,12 @@ module.exports = () => {
     } catch (err) {
       return next(err);
     }
-    */
+
   });
 
   // Save or update user
-  router.post('/', async (req, res, next) => {
-    return next('Not implemented');
+  router.post('/', async (req, res) => {
 
-    /*
     const email = req.body.email.trim();
     const password = req.body.password.trim();
     // Add this here because on update we might want to keep the password as it is
@@ -68,13 +66,10 @@ module.exports = () => {
       console.error(err);
       return res.redirect('/admin/user');
     }
-    */
   });
 
   // Delete user
-  router.get('/delete/:userId', async (req, res, next) => {
-    return next('Not implemented');
-    /*
+  router.get('/delete/:userId', async (req, res) => {
     try {
       await UserService.remove(req.params.userId);
     } catch (err) {
@@ -92,20 +87,16 @@ module.exports = () => {
       text: 'The user was successfully deleted!',
     });
     return res.redirect('/admin/user');
-    */
   });
 
 
-  router.get('/impersonate/:userId', (req, res, next) => {
-    return next('Not implemented');
-    /*
+  router.get('/impersonate/:userId', (req, res) => {
     req.session.userId = req.params.userId;
     req.session.messages.push({
       type: 'success',
       text: 'User successfully switched',
     });
     return res.redirect('/admin/user');
-    */
   });
 
   return router;
