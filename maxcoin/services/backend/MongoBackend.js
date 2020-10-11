@@ -43,10 +43,13 @@ class MongoBackend {
     return this.collection.insertMany(documents);
   }
 
+<<<<<<< HEAD
   async getMax() {
     return this.collection.findOne({}, { sort: { value: -1 } });
   }
 
+=======
+>>>>>>> 03_05b
   async max() {
     console.info("Connection to MongoDB");
     console.time("mongodb-connect");
