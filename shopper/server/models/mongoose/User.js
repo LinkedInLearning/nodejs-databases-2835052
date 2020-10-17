@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const SALT_WORK_FACTOR = 10;
-
-
 const UserSchema = mongoose.Schema({
   email: {
     // Trim and lowercase
@@ -14,23 +11,22 @@ const UserSchema = mongoose.Schema({
   },
 }, { timestamps: true });
 
+async function generateHash(password) {
+  const COST = 12;
+  return bcrypt.hash(password, COST);
+}
+
 UserSchema.pre('save', function preSave(next) {
   const user = this;
-
-  // only hash the password if it has been modified (or is new)
-  if (!user.isModified('password')) return next();
-
-  // generate a salt
-  return bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
-    if (err) return next(err);
-    // hash the password using our new salt
-    return bcrypt.hash(user.password, salt, (hasherr, hash) => {
-      if (hasherr) return next(hasherr);
-      // override the cleartext password with the hashed one
+  if(user.password) {
+    return generateHash(user.password).then(hash => {
       user.password = hash;
       return next();
+    }).catch(error => {
+      return next(error);
     });
-  });
+  }
+  return next();
 });
 
 UserSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
@@ -39,6 +35,5 @@ UserSchema.methods.comparePassword = function comparePassword(candidatePassword,
     return cb(null, isMatch);
   });
 };
-
 
 module.exports = mongoose.model('User', UserSchema);
