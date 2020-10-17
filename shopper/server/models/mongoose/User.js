@@ -18,7 +18,10 @@ async function generateHash(password) {
 
 UserSchema.pre('save', function preSave(next) {
   const user = this;
-  if(user.password) {
+
+  // Only create a new password hash if the field was updated
+  if(user.isModified('password')) {
+    console.log('modified');
     return generateHash(user.password).then(hash => {
       user.password = hash;
       return next();
@@ -29,11 +32,8 @@ UserSchema.pre('save', function preSave(next) {
   return next();
 });
 
-UserSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-    if (err) return cb(err);
-    return cb(null, isMatch);
-  });
+UserSchema.methods.comparePassword = async function comparePassword(candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password);
 };
 
 module.exports = mongoose.model('User', UserSchema);
