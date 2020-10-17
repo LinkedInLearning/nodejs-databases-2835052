@@ -15,11 +15,16 @@ class UserService {
   }
 
   static async update(userId, data) {
-    // This is a bit clumsy but makes sure that the
-    // pre save hook is applied.
+    // Fetch the user first
     const user = await UserModel.findById(userId);
-    const updatedUser = Object.assign(user, data);
-    return updatedUser.save();
+    user.email = data.email;
+
+    // Only set the password if it was modified
+    if(data.password) {
+      user.password = data.password;
+    }
+
+    return user.save();
   }
 
   static async remove(userId) {
