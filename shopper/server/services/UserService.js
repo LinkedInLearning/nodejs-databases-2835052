@@ -15,7 +15,11 @@ class UserService {
   }
 
   static async update(userId, data) {
-    return UserModel.findByIdAndUpdate(userId, data).exec();
+    // This is a bit clumsy but makes sure that the
+    // pre save hook is applied.
+    const user = await UserModel.findById(userId);
+    const updatedUser = Object.assign(user, data);
+    return updatedUser.save();
   }
 
   static async remove(userId) {
