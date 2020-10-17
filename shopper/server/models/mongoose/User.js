@@ -21,7 +21,6 @@ UserSchema.pre('save', function preSave(next) {
 
   // Only create a new password hash if the field was updated
   if(user.isModified('password')) {
-    console.log('modified');
     return generateHash(user.password).then(hash => {
       user.password = hash;
       return next();
