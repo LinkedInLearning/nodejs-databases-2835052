@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const SALT_WORK_FACTOR = 10;
-
 const UserSchema = mongoose.Schema({
   email: {
     // Trim and lowercase
@@ -14,7 +12,8 @@ const UserSchema = mongoose.Schema({
 }, { timestamps: true });
 
 async function generateHash(password) {
-  return bcrypt.hash(password, SALT_WORK_FACTOR);
+  const COST = 12;
+  return bcrypt.hash(password, COST);
 }
 
 UserSchema.pre('save', function preSave(next) {
