@@ -6,7 +6,6 @@ module.exports = () => {
   const router = express.Router();
 
   router.get('/:userId?', async (req, res, next) => {
-
     try {
       const users = await UserService.getAll();
 
@@ -23,12 +22,10 @@ module.exports = () => {
     } catch (err) {
       return next(err);
     }
-
   });
 
   // Save or update user
   router.post('/', async (req, res) => {
-
     const email = req.body.email.trim();
     const password = req.body.password.trim();
     // Add this here because on update we might want to keep the password as it is
@@ -88,7 +85,8 @@ module.exports = () => {
     });
     return res.redirect('/admin/user');
   });
-  
+
+
   router.get('/impersonate/:userId', (req, res) => {
     req.session.userId = req.params.userId;
     req.session.messages.push({
