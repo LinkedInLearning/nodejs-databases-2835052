@@ -6,7 +6,6 @@ const Redis = require('ioredis');
 
 const config = require('../config');
 const App = require('../app');
-const { connect } = require('http2');
 
 async function connectToMongoose() {
   return mongoose.connect(config.mongodb.url, {
