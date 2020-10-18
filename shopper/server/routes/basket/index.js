@@ -1,13 +1,13 @@
-const express = require('express');
+const express = require("express");
 
 module.exports = () => {
   const router = express.Router();
 
-  router.get('/', async (req, res) => {
-    return res.render('basket', {});
+  router.get("/", async (req, res) => {
+    return res.render("basket", {});
 
     /*
-    const basketItems = await basket.getAll(res.locals.currentUser.id);
+    // --> Implement adding to basket
     let items = [];
     if (basketItems) {
       items = await Promise.all(Object.keys(basketItems).map(async (key) => {
@@ -20,8 +20,8 @@ module.exports = () => {
     */
   });
 
-  router.get('/remove/:itemId', async (req, res, next) => {
-    return next('Not implemented');
+  router.get("/remove/:itemId", async (req, res, next) => {
+    return next("Not implemented");
 
     /*
     if (!res.locals.currentUser) {
@@ -33,7 +33,7 @@ module.exports = () => {
     }
 
     try {
-      await basket.remove(req.params.itemId, res.locals.currentUser.id);
+      // --> Implement removing from basket
       req.session.messages.push({
         type: 'success',
         text: 'The item was removed from the the basket',
@@ -51,8 +51,8 @@ module.exports = () => {
     */
   });
 
-  router.get('/buy', async (req, res, next) => {
-    return next('Not implemented');
+  router.get("/buy", async (req, res, next) => {
+    return next("Not implemented");
 
     /*
     try {
@@ -60,7 +60,7 @@ module.exports = () => {
       const user = res.locals.currentUser;
 
       // Get all basket items for a user
-      const basketItems = await basket.getAll(userId);
+      //--> Implement get all from basket
 
       // be defensive
       if (!basketItems) {
@@ -81,7 +81,7 @@ module.exports = () => {
         await order.create(user, items, t);
         // Clear the users basket
         await Promise.all(Object.keys(basketItems).map(async (key) => {
-          await basket.remove(key, userId);
+          // --> Implement removing from basket
         }));
       });
 

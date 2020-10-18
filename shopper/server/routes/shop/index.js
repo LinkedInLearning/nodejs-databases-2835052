@@ -1,19 +1,18 @@
-const express = require('express');
-
+const express = require("express");
 
 module.exports = () => {
   const router = express.Router();
 
-  router.get('/', async (req, res) => {
-    return res.render('shop', {});
+  router.get("/", async (req, res) => {
+    return res.render("shop", {});
     /*
     const items = await ItemService.getAll();
     return res.render('shop', { items });
     */
   });
 
-  router.get('/tobasket/:itemId', async (req, res, next) => {
-    return next('Not implemented');
+  router.get("/tobasket/:itemId", async (req, res, next) => {
+    return next("Not implemented");
 
     /*
     if (!res.locals.currentUser) {
@@ -25,7 +24,7 @@ module.exports = () => {
     }
 
     try {
-      await basket.add(req.params.itemId, res.locals.currentUser.id);
+      // --> Implement adding to basket
       req.session.messages.push({
         type: 'success',
         text: 'The item was added to the basket',
