@@ -29,6 +29,9 @@ function connectToRedis() {
   return redis;
 }
 
+const redis = connectToRedis();
+config.redis.client = redis;
+
 /* Logic to start the application */
 const app = App(config);
 const port = process.env.PORT || '3000';
