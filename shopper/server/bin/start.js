@@ -2,9 +2,11 @@
 
 const http = require('http');
 const mongoose = require('mongoose');
+const Redis = require('ioredis');
 
 const config = require('../config');
 const App = require('../app');
+const { connect } = require('http2');
 
 async function connectToMongoose() {
   return mongoose.connect(config.mongodb.url, {
@@ -13,6 +15,19 @@ async function connectToMongoose() {
     useCreateIndex: true,
     useFindAndModify: false,
   });
+}
+
+function connectToRedis() {
+  const redis = new Redis(config.redis.port);
+  redis.on('connect', () => {
+    console.info('Successfully connected to Redis');
+  });
+
+  redis.on('error', (error) => {
+    console.error(error);
+    process.exit(1);
+  });
+  return redis;
 }
 
 /* Logic to start the application */
@@ -57,6 +72,8 @@ server.on('listening', onListening);
 
 connectToMongoose().then(() => {
   console.info('Successfully connected to MongoDB');
+  const redis = connectToRedis();
+  config.redis.client = redis;
   server.listen(port);
 }).catch((error) => {
   console.error(error);
