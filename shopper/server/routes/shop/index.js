@@ -25,7 +25,11 @@ module.exports = () => {
     }
 
     try {
+<<<<<<< HEAD
       await basket.add(req.params.itemId, res.locals.currentUser.id);
+=======
+      await basket.add(req.params.itemId);
+>>>>>>> 5454c90... Basket scaffold
       req.session.messages.push({
         type: 'success',
         text: 'The item was added to the basket',
