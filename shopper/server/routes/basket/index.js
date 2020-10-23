@@ -1,17 +1,13 @@
-const express = require('express');
+const express = require("express");
 
 module.exports = () => {
   const router = express.Router();
 
-  router.get('/', async (req, res) => {
-    return res.render('basket', {});
+  router.get("/", async (req, res) => {
+    return res.render("basket", {});
 
     /*
-<<<<<<< HEAD
-    const basketItems = await basket.getAll(res.locals.currentUser.id);
-=======
     const basketItems = await basket.getAll();
->>>>>>> 5454c90... Basket scaffold
     let items = [];
     if (basketItems) {
       items = await Promise.all(Object.keys(basketItems).map(async (itemId) => {
@@ -24,8 +20,8 @@ module.exports = () => {
     */
   });
 
-  router.get('/remove/:itemId', async (req, res, next) => {
-    return next('Not implemented');
+  router.get("/remove/:itemId", async (req, res, next) => {
+    return next("Not implemented");
 
     /*
     if (!res.locals.currentUser) {
@@ -37,11 +33,7 @@ module.exports = () => {
     }
 
     try {
-<<<<<<< HEAD
-      await basket.remove(req.params.itemId, res.locals.currentUser.id);
-=======
       await basket.remove(itemId);
->>>>>>> 5454c90... Basket scaffold
       req.session.messages.push({
         type: 'success',
         text: 'The item was removed from the the basket',
@@ -59,8 +51,8 @@ module.exports = () => {
     */
   });
 
-  router.get('/buy', async (req, res, next) => {
-    return next('Not implemented');
+  router.get("/buy", async (req, res, next) => {
+    return next("Not implemented");
 
     /*
     try {
@@ -68,11 +60,7 @@ module.exports = () => {
       const user = res.locals.currentUser;
 
       // Get all basket items for a user
-<<<<<<< HEAD
-      const basketItems = await basket.getAll(userId);
-=======
       const basketItems = await basket.getAll();
->>>>>>> 5454c90... Basket scaffold
 
       // be defensive
       if (!basketItems) {
@@ -92,13 +80,8 @@ module.exports = () => {
         // Create a new order and add all items
         await order.create(user, items, t);
         // Clear the users basket
-<<<<<<< HEAD
-        await Promise.all(Object.keys(basketItems).map(async (key) => {
-          await basket.remove(key, userId);
-=======
         await Promise.all(Object.keys(basketItems).map(async (itemId) => {
           await basket.remove(key);
->>>>>>> 5454c90... Basket scaffold
         }));
       });
 
