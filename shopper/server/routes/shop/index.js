@@ -24,7 +24,7 @@ module.exports = () => {
     }
 
     try {
-      // --> Implement adding to basket
+      await basket.add(req.params.itemId);
       req.session.messages.push({
         type: 'success',
         text: 'The item was added to the basket',

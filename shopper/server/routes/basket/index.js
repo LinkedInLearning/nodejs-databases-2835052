@@ -7,11 +7,11 @@ module.exports = () => {
     return res.render("basket", {});
 
     /*
-    // --> Implement adding to basket
+    const basketItems = await basket.getAll();
     let items = [];
     if (basketItems) {
-      items = await Promise.all(Object.keys(basketItems).map(async (key) => {
-        const item = await ItemService.getOne(key);
+      items = await Promise.all(Object.keys(basketItems).map(async (itemId) => {
+        const item = await ItemService.getOne(itemId);
         item.quantity = basketItems[key];
         return item;
       }));
@@ -33,7 +33,7 @@ module.exports = () => {
     }
 
     try {
-      // --> Implement removing from basket
+      await basket.remove(itemId);
       req.session.messages.push({
         type: 'success',
         text: 'The item was removed from the the basket',
@@ -60,7 +60,7 @@ module.exports = () => {
       const user = res.locals.currentUser;
 
       // Get all basket items for a user
-      //--> Implement get all from basket
+      const basketItems = await basket.getAll();
 
       // be defensive
       if (!basketItems) {
@@ -80,8 +80,8 @@ module.exports = () => {
         // Create a new order and add all items
         await order.create(user, items, t);
         // Clear the users basket
-        await Promise.all(Object.keys(basketItems).map(async (key) => {
-          // --> Implement removing from basket
+        await Promise.all(Object.keys(basketItems).map(async (itemId) => {
+          await basket.remove(key);
         }));
       });
 
