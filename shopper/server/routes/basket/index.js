@@ -7,7 +7,7 @@ module.exports = () => {
     return res.render("basket", {});
 
     /*
-    const basketItems = await basket.getAll(res.locals.currentUser.id);
+    const basketItems = await basket.getAll();
     let items = [];
     if (basketItems) {
       items = await Promise.all(Object.keys(basketItems).map(async (itemId) => {
@@ -33,7 +33,7 @@ module.exports = () => {
     }
 
     try {
-      await basket.remove(req.params.itemId, res.locals.currentUser.id);
+      await basket.remove(itemId);
       req.session.messages.push({
         type: 'success',
         text: 'The item was removed from the the basket',
@@ -60,7 +60,7 @@ module.exports = () => {
       const user = res.locals.currentUser;
 
       // Get all basket items for a user
-      const basketItems = await basket.getAll(userId);
+      const basketItems = await basket.getAll();
 
       // be defensive
       if (!basketItems) {
@@ -80,8 +80,8 @@ module.exports = () => {
         // Create a new order and add all items
         await order.create(user, items, t);
         // Clear the users basket
-        await Promise.all(Object.keys(basketItems).map(async (key) => {
-          await basket.remove(key, userId);
+        await Promise.all(Object.keys(basketItems).map(async (itemId) => {
+          await basket.remove(key);
         }));
       });
 
