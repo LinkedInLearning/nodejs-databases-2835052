@@ -1,17 +1,17 @@
-const express = require('express');
+const express = require("express");
 
 module.exports = () => {
   const router = express.Router();
 
-  router.get('/', async (req, res) => {
-    return res.render('basket', {});
+  router.get("/", async (req, res) => {
+    return res.render("basket", {});
 
     /*
     const basketItems = await basket.getAll(res.locals.currentUser.id);
     let items = [];
     if (basketItems) {
-      items = await Promise.all(Object.keys(basketItems).map(async (key) => {
-        const item = await ItemService.getOne(key);
+      items = await Promise.all(Object.keys(basketItems).map(async (itemId) => {
+        const item = await ItemService.getOne(itemId);
         item.quantity = basketItems[key];
         return item;
       }));
@@ -20,8 +20,8 @@ module.exports = () => {
     */
   });
 
-  router.get('/remove/:itemId', async (req, res, next) => {
-    return next('Not implemented');
+  router.get("/remove/:itemId", async (req, res, next) => {
+    return next("Not implemented");
 
     /*
     if (!res.locals.currentUser) {
@@ -51,8 +51,8 @@ module.exports = () => {
     */
   });
 
-  router.get('/buy', async (req, res, next) => {
-    return next('Not implemented');
+  router.get("/buy", async (req, res, next) => {
+    return next("Not implemented");
 
     /*
     try {
