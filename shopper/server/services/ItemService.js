@@ -1,8 +1,8 @@
-const ItemModel = require('../models/mongoose/Item');
+const ItemModel = require("../models/mongoose/Item");
 
 class ItemService {
   static async getAll() {
-    return ItemModel.find({}).sort({createdAt: -1}).exec();
+    return ItemModel.find({}).sort({ createdAt: -1 }).exec();
   }
 
   static async getOne(itemId) {
@@ -18,8 +18,8 @@ class ItemService {
     return ItemModel.findByIdAndUpdate(itemId, data).exec();
   }
 
-  static async remove(query) {
-    return ItemModel.deleteOne(query).exec();
+  static async remove(itemId) {
+    return ItemModel.deleteOne({ _id: itemId }).exec();
   }
 }
 
