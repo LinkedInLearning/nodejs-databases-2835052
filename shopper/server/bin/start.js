@@ -71,7 +71,6 @@ server.on("listening", onListening);
 connectToMongoose()
   .then(() => {
     console.info("Successfully connected to MongoDB");
-    config.redis.client = redis;
     server.listen(port);
   })
   .catch((error) => {
