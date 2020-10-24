@@ -25,7 +25,14 @@ module.exports = () => {
   });
 
   // Save or update item
+<<<<<<< HEAD
   router.post("/", async (req, res) => {
+=======
+  router.post("/", async (req, res, next) => {
+    return next("Not implemented");
+
+    /*
+>>>>>>> 334db19... update scaffold
     // Massage the passed in form data a bit
     const sku = req.body.sku.trim();
     const name = req.body.name.trim();
@@ -88,6 +95,10 @@ module.exports = () => {
       text: "The item was successfully deleted!",
     });
     return res.redirect("/admin/item");
+<<<<<<< HEAD
+=======
+    */
+>>>>>>> 334db19... update scaffold
   });
   return router;
 };
