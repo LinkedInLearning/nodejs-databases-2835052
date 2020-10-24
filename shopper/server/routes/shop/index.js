@@ -17,27 +17,31 @@ module.exports = () => {
     /*
     if (!res.locals.currentUser) {
       req.session.messages.push({
-        type: 'warning',
-        text: 'Please log in first',
+        type: "warning",
+        text: "Please log in first",
       });
-      return res.redirect('/shop');
+      return res.redirect("/shop");
     }
 
     try {
-      await basket.add(req.params.itemId, res.locals.currentUser.id);
+      const basket = new BasketService(
+        config.redis.client,
+        res.locals.currentUser.id
+      );
+      await basket.add(req.params.itemId);
       req.session.messages.push({
-        type: 'success',
-        text: 'The item was added to the basket',
+        type: "success",
+        text: "The item was added to the basket",
       });
     } catch (err) {
       req.session.messages.push({
-        type: 'danger',
-        text: 'There was an error adding the item to the basket',
+        type: "danger",
+        text: "There was an error adding the item to the basket",
       });
       console.error(err);
     }
 
-    return res.redirect('/shop');
+    return res.redirect("/shop");
     */
   });
 
