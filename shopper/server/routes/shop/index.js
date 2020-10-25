@@ -1,20 +1,17 @@
 const express = require("express");
 
-module.exports = () => {
+const ItemService = require("../../services/ItemService");
+const BasketService = require("../../services/BasketService");
+
+module.exports = (config) => {
   const router = express.Router();
 
   router.get("/", async (req, res) => {
-    return res.render("shop", {});
-    /*
     const items = await ItemService.getAll();
-    return res.render('shop', { items });
-    */
+    return res.render("shop", { items });
   });
 
-  router.get("/tobasket/:itemId", async (req, res, next) => {
-    return next("Not implemented");
-
-    /*
+  router.get("/tobasket/:itemId", async (req, res) => {
     if (!res.locals.currentUser) {
       req.session.messages.push({
         type: "warning",
@@ -42,7 +39,6 @@ module.exports = () => {
     }
 
     return res.redirect("/shop");
-    */
   });
 
   return router;
