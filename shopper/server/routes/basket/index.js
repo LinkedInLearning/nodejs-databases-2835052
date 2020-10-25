@@ -93,8 +93,12 @@ module.exports = (config) => {
       const items = await Promise.all(
         Object.keys(basketItems).map(async (key) => {
           const item = await ItemService.getOne(key);
-          item.quantity = basketItems[key];
-          return item;
+          return {
+            sku: item.sku,
+            qty: basketItems[key],
+            price: item.price,
+            name: item.name,
+          };
         })
       );
 
