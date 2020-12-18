@@ -43,6 +43,8 @@ class MongoBackend {
     return this.collection.insertMany(documents);
   }
 
+  async getMax() {}
+
   async max() {
     console.info("Connection to MongoDB");
     console.time("mongodb-connect");
