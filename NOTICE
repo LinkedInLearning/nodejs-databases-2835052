@@ -1,11 +1,42 @@
-Copyright 2019 LinkedIn Corporation
+Copyright 2021 LinkedIn Corporation
 All Rights Reserved.
 
 Licensed under the LinkedIn Learning Exercise File License (the "License").
 See LICENSE in the project root for license information.
 
 ATTRIBUTIONS:
-[PLEASE PROVIDE ATTRIBUTIONS OR DELETE THIS AND THE ABOVE LINE “ATTRIBUTIONS”]
+Dependencies:
+
+Axios
+https://www.npmjs.com/package/axios
+
+Express
+https://www.npmjs.com/package/body-parser
+https://www.npmjs.com/package/cookie-parser
+https://www.npmjs.com/package/session
+https://www.npmjs.com/package/express
+
+ESLint
+https://www.npmjs.com/package/eslint
+
+AirBnB
+https://www.npmjs.com/package/eslint-config-airbnb-base
+
+nfriendly (Nathan Friedly)
+https://www.npmjs.com/package/eslint-config-prettier
+
+benmosher (Ben Mosher)
+https://www.npmjs.com/package/eslint-plugin-import
+
+Prettier
+https://www.npmjs.com/package/prettier
+https://www.npmjs.com/package/eslint-plugin-prettier
+
+Remy
+https://www.npmjs.com/package/nodemon
+
+Pug
+https://www.npmjs.com/package/pug
 
 Please note, this project may automatically load third party code from external 
 repositories (for example, NPM modules, Composer packages, or other dependencies). 
