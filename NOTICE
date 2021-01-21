@@ -7,36 +7,84 @@ See LICENSE in the project root for license information.
 ATTRIBUTIONS:
 Dependencies:
 
-Axios
-https://www.npmjs.com/package/axios
-
-Express
-https://www.npmjs.com/package/body-parser
-https://www.npmjs.com/package/cookie-parser
-https://www.npmjs.com/package/session
-https://www.npmjs.com/package/express
-
-ESLint
-https://www.npmjs.com/package/eslint
-
 AirBnB
-https://www.npmjs.com/package/eslint-config-airbnb-base
+https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base
+Copyright (c) 2012 Airbnb
+License: MIT
+https://opensource.org/licenses/MIT
 
-nfriendly (Nathan Friedly)
-https://www.npmjs.com/package/eslint-config-prettier
+Axios
+https://github.com/axios/axios
+Copyright (c) 2014-present Matt Zabriskie
+License: MIT
+https://opensource.org/licenses/MIT
 
 benmosher (Ben Mosher)
-https://www.npmjs.com/package/eslint-plugin-import
+https://github.com/benmosher/eslint-plugin-import
+Copyright (c) 2015 Ben Mosher
+License: MIT
+https://opensource.org/licenses/MIT
+
+ESLint
+https://github.com/eslint/eslint
+Copyright JS Foundation and other contributors, https://js.foundation
+License: MIT
+https://opensource.org/licenses/MIT
+
+Express
+https://github.com/expressjs/body-parser
+Copyright (c) 2014 Jonathan Ong <me@jongleberry.com>
+Copyright (c) 2014-2015 Douglas Christopher Wilson <doug@somethingdoug.com>
+License: MIT
+https://opensource.org/licenses/MIT
+
+https://github.com/expressjs/cookie-parser
+Copyright (c) 2014 TJ Holowaychuk <tj@vision-media.ca>
+Copyright (c) 2015 Douglas Christopher Wilson <doug@somethingdoug.com>
+License: MIT
+https://opensource.org/licenses/MIT
+
+https://github.com/expressjs/session
+Copyright (c) 2010 Sencha Inc.
+Copyright (c) 2011 TJ Holowaychuk <tj@vision-media.ca>
+Copyright (c) 2014-2015 Douglas Christopher Wilson <doug@somethingdoug.com>
+License: MIT
+https://opensource.org/licenses/MIT
+
+https://github.com/expressjs/express
+Copyright (c) 2009-2014 TJ Holowaychuk <tj@vision-media.ca>
+Copyright (c) 2013-2014 Roman Shtylman <shtylman+expressjs@gmail.com>
+Copyright (c) 2014-2015 Douglas Christopher Wilson <doug@somethingdoug.com>
+License: MIT
+https://opensource.org/licenses/MIT
+
+nfriendly (Nathan Friedly)
+https://github.com/prettier/eslint-config-prettier
+Copyright (c) 2017, 2018, 2019, 2020, 2021 Simon Lydell and contributors
+License: MIT
+https://opensource.org/licenses/MIT
 
 Prettier
-https://www.npmjs.com/package/prettier
-https://www.npmjs.com/package/eslint-plugin-prettier
+https://github.com/prettier/prettier
+Copyright © James Long and contributors
+License: MIT
+https://opensource.org/licenses/MIT
 
-Remy
-https://www.npmjs.com/package/nodemon
+https://github.com/prettier/eslint-plugin-prettier
+Copyright © 2017 Andres Suarez and Teddy Katz
+License: MIT
+https://opensource.org/licenses/MIT
 
 Pug
-https://www.npmjs.com/package/pug
+https://github.com/pugjs/pug
+License: MIT
+https://opensource.org/licenses/MIT
+
+remy (Remy Sharp)
+https://github.com/remy/nodemon
+Copyright (c) 2010 - present, Remy Sharp, https://remysharp.com <remy@remysharp.com>
+License: MIT
+https://opensource.org/licenses/MIT
 
 Please note, this project may automatically load third party code from external 
 repositories (for example, NPM modules, Composer packages, or other dependencies). 
@@ -44,3 +92,24 @@ If so, such third party code may be subject to other license terms than as set
 forth above. In addition, such third party code may also depend on and load 
 multiple tiers of dependencies. Please review the applicable licenses of the 
 additional dependencies.
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
