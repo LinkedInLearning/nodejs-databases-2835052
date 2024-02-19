@@ -27,7 +27,11 @@ class MongoBackend {
     }
   }
 
-  async disconnect() {}
+  async disconnect() {
+    if (this.client) {
+      this.client.close();
+    }
+  }
 
   async insert() {}
 
