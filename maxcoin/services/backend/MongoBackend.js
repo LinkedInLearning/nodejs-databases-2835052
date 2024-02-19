@@ -54,8 +54,14 @@ class MongoBackend {
       console.info("you can now to send and retreive data from mongoDB");
 
       this.disconnect();
+    } else {
+      return -1;
     }
     console.timeEnd("mongodb-connect");
+    console.info("Inserting into MongoDB");
+    console.time("mongodb-insert");
+    const insertResult = await this.insert();
+    console.timeEnd("mongodb-insert");
   }
 }
 
