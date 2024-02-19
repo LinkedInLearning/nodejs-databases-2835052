@@ -49,7 +49,7 @@ class MongoBackend {
   }
 
   async getMax() {
-    return this.collection.findOne({}, { sort: { value: -1 } });
+    return this.collection.findOne();
   }
 
   async max() {
@@ -62,11 +62,18 @@ class MongoBackend {
       throw new Error("Connecting to MongoDB failed");
     }
     console.timeEnd("mongodb-connect");
-    console.info("Inserting into MongoDB");
+
+    /*  console.info("Inserting into MongoDB");
     console.time("mongodb-insert");
     const insertResult = await this.insert();
     console.timeEnd("mongodb-insert");
     console.info(`Inserted ${insertResult.insertedCount} document(s)`);
+ */
+    console.info("find Max value into MongoDB");
+    console.time("mongodb-find");
+    this.getMax();
+    console.timeEnd("mongodb-find");
+
     console.info("Disconnecting into MongoDB");
     console.time("mongodb-disconnect");
     this.disconnect();
