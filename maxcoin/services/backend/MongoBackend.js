@@ -37,7 +37,15 @@ class MongoBackend {
 
   async getMax() {}
 
-  async max() {}
+  async max() {
+    console.info("Connection of mongoDB");
+    console.time("mongodb-connect");
+    const client = await this.connect();
+    if (client !== -1) {
+      console.info("Connected to MongoDB");
+    }
+    console.timeEnd("mongodb-connect");
+  }
 }
 
 module.exports = MongoBackend;
