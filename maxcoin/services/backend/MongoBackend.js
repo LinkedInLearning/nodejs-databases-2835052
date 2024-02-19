@@ -13,9 +13,7 @@ class MongoBackend {
   }
 
   async connect() {
-    const mongoClient = new MongoClient(this.mongoUrl, {
-      useUnifiedTopology: true,
-    });
+    const mongoClient = new MongoClient(this.mongoUrl, {});
     try {
       this.client = await mongoClient.connect();
       console.log("Connected to MongoDB server");
@@ -33,7 +31,17 @@ class MongoBackend {
     }
   }
 
-  async insert() {}
+  async insert() {
+    const data = this.coinAPI.fetch();
+    const result = [];
+    // Insertion is done in a synchronous way for simplicity purpose
+    Object.entries(data.pbi).forEach((entry) => {
+      result.push({
+        date: entry[0],
+        value: entry[1],
+      });
+    });
+  }
 
   async getMax() {}
 
@@ -42,7 +50,8 @@ class MongoBackend {
     console.time("mongodb-connect");
     const client = await this.connect();
     if (client !== -1) {
-      console.info("Connected to MongoDB");
+      console.info("you can now to send and retreive data from mongoDB");
+      this.disconnect();
     }
     console.timeEnd("mongodb-connect");
   }
