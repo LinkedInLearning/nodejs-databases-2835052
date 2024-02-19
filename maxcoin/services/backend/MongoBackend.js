@@ -55,13 +55,14 @@ class MongoBackend {
 
       this.disconnect();
     } else {
-      return -1;
+      throw new Error("Connecting to MongoDB failed");
     }
     console.timeEnd("mongodb-connect");
     console.info("Inserting into MongoDB");
     console.time("mongodb-insert");
     const insertResult = await this.insert();
     console.timeEnd("mongodb-insert");
+    console.info(`Inserted ${insertResult.insertedCount} document(s)`);
   }
 }
 
