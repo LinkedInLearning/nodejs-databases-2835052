@@ -48,7 +48,16 @@ class MongoBackend {
     );
   }
 
-  async getMax() {}
+  async getMax() {
+    const maxDoc = await this.collection
+      .find()
+      .sort({ value: -1 })
+      .limit(1)
+      .toArray();
+    if (!maxDoc || !maxDoc.length)
+      throw Error("No document found in the collection");
+    else return maxDoc[0];
+  }
 
   async max() {
     console.info("Connection of mongoDB");
