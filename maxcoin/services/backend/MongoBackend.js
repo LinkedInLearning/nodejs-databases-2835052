@@ -69,12 +69,12 @@ class MongoBackend {
     console.timeEnd("mongodb-insert");
     console.info(`Inserted ${insertResult.insertedCount} document(s)`);
  */
-    console.info("find Max value into MongoDB");
+    console.info("find Max value from MongoDB");
     console.time("mongodb-find");
-    const doc = this.getMax();
+    const doc = await this.getMax();
     console.timeEnd("mongodb-find");
 
-    console.info("Disconnecting into MongoDB");
+    console.info("Disconnecting  MongoDB");
     console.time("mongodb-disconnect");
     this.disconnect();
     console.timeEnd("mongodb-disconnect");
