@@ -13,13 +13,17 @@ class MongoBackend {
   }
 
   async connect() {
-    this.client = new MongoClient(this.mongoUrl, { useUnifiedTopology: true });
+    const mongoClient = new MongoClient(this.mongoUrl, {
+      useUnifiedTopology: true,
+    });
     try {
-      await this.client.connect();
+      this.client = await mongoClient.connect();
       console.log("Connected to MongoDB server");
       this.collection = this.client.db("maxcoin").collection("values");
+      return this.client;
     } catch (err) {
       console.error(`Failed to connect to the mongoDB server ${err}`);
+      return -1;
     }
   }
 
