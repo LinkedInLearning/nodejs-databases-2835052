@@ -49,14 +49,7 @@ class MongoBackend {
   }
 
   async getMax() {
-    const maxDoc = await this.collection
-      .find()
-      .sort({ value: -1 })
-      .limit(1)
-      .toArray();
-    if (!maxDoc || !maxDoc.length)
-      throw Error("No document found in the collection");
-    else return maxDoc[0];
+    return this.collection.findOne({}, { sort: { value: -1 } });
   }
 
   async max() {
