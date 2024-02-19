@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-constructor */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-empty-function */
+const { MongoClient } = require("mongodb");
 const CoinAPI = require("../CoinAPI");
 
 class MongoBackend {
@@ -11,7 +12,10 @@ class MongoBackend {
     this.mongoUrl = "mongodb://localhost:37017/maxcoin";
   }
 
-  async connect() {}
+  async connect() {
+    this.client = MongoClient.connect(this.mongoUrl, { useNewUrlParser: true });
+    this.collection = (await this.client).db().collection("prices");
+  }
 
   async disconnect() {}
 
