@@ -49,7 +49,7 @@ class MongoBackend {
   }
 
   async getMax() {
-    return this.collection.findOne();
+    return this.collection.findOne({}, { value: { sort: -1 } });
   }
 
   async max() {
@@ -71,13 +71,17 @@ class MongoBackend {
  */
     console.info("find Max value into MongoDB");
     console.time("mongodb-find");
-    this.getMax();
+    const doc = this.getMax();
     console.timeEnd("mongodb-find");
 
     console.info("Disconnecting into MongoDB");
     console.time("mongodb-disconnect");
     this.disconnect();
     console.timeEnd("mongodb-disconnect");
+    return {
+      date: doc.date,
+      value: doc.value,
+    };
   }
 }
 
